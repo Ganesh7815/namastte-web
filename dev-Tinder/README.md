@@ -1,1 +1,6 @@
-# React + Vite
+- created a vite+react
+- remove the unnecssary code and create the hello world
+- installing tailwind and configure
+- daisy ui - it is compatability with tailwind
+- play with the themes in daisy ui
+- add NavBar component to App.jsx
