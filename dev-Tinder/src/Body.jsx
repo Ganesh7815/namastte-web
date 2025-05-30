@@ -6,7 +6,7 @@ import Footer from './Footer';
 const Body = () => {
     return (
         <>
-            <NavBar />
+            <NavBar/>
             <Footer/>
             <Outlet/>
             

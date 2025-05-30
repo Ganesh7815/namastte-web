@@ -11,6 +11,13 @@
 
 
 
+ - crete a login page
+ - install axios
+ - CORS - install cors in backend => add middleware to with configuration s:orgin,credational :true and front end withcredational:true
+ -    
+
+
+
 
 Body
    
