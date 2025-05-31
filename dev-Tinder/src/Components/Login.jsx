@@ -1,22 +1,34 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+import appStore from '../utils/appStore';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../utils/userSlice';
+import { useNavigate } from 'react-router-dom';
+
 const Login = () => {
-  const[email,setEmail] = useState();
-  const[password,setPassword] = useState();
+  const[email,setEmail] = useState("ganesh@gmail.com");
+  const[password,setPassword] = useState("ganesh123@");
+  const dispatch = useDispatch();
+  const nav = useNavigate();
+  
 
   const hander = async() =>{
      try{
-         await axios.post("http://localhost:7777/login",{
+           const user = await axios.post("http://localhost:7777/login",{
             email,
             password
-         },{withCredentials: true})
+         },{withCredentials: true});
+
+        //  console.log(user); 
+        dispatch(addUser(user));
+        nav('/');
      }catch(err)
      {
         console.log("Error :"+err.message);
-        
      }
   }
+
   return (
         <div className="flex justify-center">
         <div className="card bg-primary text-primary-content w-95 flex my-35 mx-auto">
