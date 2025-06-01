@@ -33,7 +33,7 @@ const Login = () => {
 
   return (
         <div className="flex justify-center">
-        <div className="card bg-base-300  w-95 flex my-35 mx-auto">
+        <div className="card bg-base-300  w-95 flex my-15 mx-auto">
       <div className="card-body">
         <h2 className="card-title justify-center">Email Id</h2>
 

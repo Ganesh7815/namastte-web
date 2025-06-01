@@ -24,8 +24,11 @@
  - you should not be access other routes without login
  - if token is not present,redirect user to login page
 
- 
-   
+- logout feature
+- get the feed and  add the feed in the store
+- create the feed card and play
+
+
 
 
 
