@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 const Login = () => {
   const[email,setEmail] = useState("ganesh@gmail.com");
   const[password,setPassword] = useState("ganesh123@");
+  const[error,setError] = useState("");
   const dispatch = useDispatch();
   const nav = useNavigate();
   
@@ -25,13 +26,14 @@ const Login = () => {
         nav('/');
      }catch(err)
      {
-        console.log("Error :"+err.message);
+        setError(err?.response?.data?.error || "something went wrong");
+        console.log("Error :"+err.user.message());
      }
   }
 
   return (
         <div className="flex justify-center">
-        <div className="card bg-primary text-primary-content w-95 flex my-35 mx-auto">
+        <div className="card bg-base-300  w-95 flex my-35 mx-auto">
       <div className="card-body">
         <h2 className="card-title justify-center">Email Id</h2>
 
@@ -78,11 +80,8 @@ const Login = () => {
             onChange={((e)=>setPassword(e.target.value))}
           />
         </label>
-        {/* <p className="validator-hint hidden">
-          Must be more than 8 characters, including
-          <br />At least one number <br />At least one lowercase letter <br />At least one uppercase letter
-        </p> */}
-        <div className="card-actions justify-center my-0">
+        <p className='text-red-600 '>{error}</p>
+        <div className="card-actions justify-center my-4">
           <button className="btn" onClick={hander}>Login</button>
         </div>
       </div>
