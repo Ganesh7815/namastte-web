@@ -4,6 +4,11 @@ import { useNavigate } from 'react-router-dom';
 
 const NavBar = () => {
   const user = useSelector((store) => store.user);
+  if(user)
+  {
+      console.log(user.data.data.firstName);
+  }
+  
 
   return (
     <div className="navbar bg-base-300 p-4 rounded-xl">
@@ -15,12 +20,12 @@ const NavBar = () => {
           <div className="dropdown dropdown-end mx-6">
            
             <div className="flex items-center justify-between gap-8">
-              <div>Welcome {user.data.user_data.firstName}</div>
+              <div>Welcome {user.data.data.firstName}</div>
               <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
                   <img
                     alt="Profile"
-                    src={user.data.user_data.photoUrl}
+                    src={user.data.data.photoUrl}
                   />
                 </div>
               </div>

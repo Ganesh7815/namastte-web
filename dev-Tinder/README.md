@@ -21,6 +21,13 @@
  - refactoring our code to add constanst file + create a components folder 
 
 
+ - you should not be access other routes without login
+ - if token is not present,redirect user to login page
+
+ 
+   
+
+
 
 
 Body
