@@ -45,7 +45,6 @@ const EditProfile = ({ user }) => {
         about
      },{withCredentials:true});
 
-     
      dispatch(addUser(updateUser?.data?.data));
      settoast(true);
 

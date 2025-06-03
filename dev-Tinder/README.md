@@ -29,6 +29,8 @@
 - create the feed card and play
 - sell the all connections
 - see all the requests
+- feature - accepted/rejected
+
 
 
 

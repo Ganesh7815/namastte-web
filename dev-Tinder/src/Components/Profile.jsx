@@ -1,7 +1,6 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
-
 import appStore from '../utils/appStore';
 import Editprofile from '../Components/Editprofile'
 import { useDispatch, useSelector } from 'react-redux';

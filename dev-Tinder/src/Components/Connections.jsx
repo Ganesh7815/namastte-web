@@ -33,7 +33,7 @@ if (!Array.isArray(currentConnection)) {
       <div className='text-center my-4 mb-0 size-10 font-bold'>Connections</div>
       {currentConnection && currentConnection.length > 0 ? (
         currentConnection.map((conn) => (
-         <div>
+         <div key={conn._id}>
          <div className='flex  my-2 bg-base-300 rounded-xl p-4  g-2 w-110 h-55  gap-4 items-center' > 
             <div> 
             <img src={conn.photoUrl} alt="Profile"  className='w-30 h-30 rounded-full '/>

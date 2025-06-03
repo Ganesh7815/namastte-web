@@ -4,11 +4,6 @@ import { useSelector } from 'react-redux';
 const Card = ({user}) => {
 
     const {firstName,secondName,age,photoUrl,about,gender,skills} = user;
-    
-     
-
-    const totskill="total"
-
     if(!user)
     {
         return <div>loading the data</div>
@@ -29,7 +24,7 @@ const Card = ({user}) => {
                {age && gender && <p className='mx-1 pb-1'>{age+" "}{gender}</p>}
                 {about && <p className='mx-1 pb-1'>{about} </p>}
                 
-                {skills &&  <p className='mx-1 pb-1'>SKILLS :{totskill}</p>}
+                {skills &&  <p className='mx-1 pb-1'>SKILLS :{skills.join(" ")}</p>}
 
                 <div className="card-actions justify-center p-2">
                 <button className="btn  btn-primary">Ignore</button>

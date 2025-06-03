@@ -4,6 +4,7 @@ import BASE_URL from '../utils/constant'
 import { useDispatch, useSelector } from 'react-redux'
 import { addFeed } from '../utils/feedSlice'
 import Card from './Card'
+import { current } from '@reduxjs/toolkit'
 
 const Feed = () => {
   const dispatch = useDispatch()
@@ -15,11 +16,14 @@ const Feed = () => {
       return
     }
     try {
-      const currentfeed = await axios.get(BASE_URL+"/feed", { withCredentials: true });
-    
-      
+      const currentfeed = await axios.get("http://localhost:7777/feed", { withCredentials: true });
+      console.log(currentfeed);
+      if(currentfeed.length==0)
+      {
+        return <div>loading the data</div>
+      }
       if (currentfeed ) {
-        dispatch(addFeed(currentfeed.data.data))
+        dispatch(addFeed(currentfeed?.data?.data))
       }
     } catch (err) {
        return<div>loading the data</div>
