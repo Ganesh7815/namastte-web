@@ -21,8 +21,10 @@ const Login = () => {
             password
          },{withCredentials: true});
 
-        //  console.log(user); 
-        dispatch(addUser(user));
+      
+         
+         
+        dispatch(addUser(user.data.data));
         nav('/');
      }catch(err)
      {

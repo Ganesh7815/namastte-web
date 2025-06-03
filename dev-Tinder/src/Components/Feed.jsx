@@ -8,20 +8,21 @@ import Card from './Card'
 const Feed = () => {
   const dispatch = useDispatch()
   const datainstore = useSelector((store) => store.feed)
+  
 
   const feedhander = async () => {
     if (datainstore) {
       return
     }
     try {
-      const currentfeed = await axios.get("http://localhost:7777/feed", { withCredentials: true });
-      console.log(currentfeed.data);
+      const currentfeed = await axios.get(BASE_URL+"/feed", { withCredentials: true });
+    
       
       if (currentfeed ) {
         dispatch(addFeed(currentfeed.data.data))
       }
     } catch (err) {
-      console.log(err.message)
+       return<div>loading the data</div>
     }
   }
 

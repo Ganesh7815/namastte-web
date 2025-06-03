@@ -1,15 +1,14 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 
 const Card = ({user}) => {
 
-    const {firstName,secondName,age,photoUrl,about,gender,skills} = user
- 
+    const {firstName,secondName,age,photoUrl,about,gender,skills} = user;
     
-    const totskill=skills.join("  ");
-  
-    
-    
-  
+     
+
+    const totskill="total"
+
     if(!user)
     {
         return <div>loading the data</div>
@@ -17,7 +16,7 @@ const Card = ({user}) => {
      
   return (
           
-           <div className="card bg-base-300 w-90 h-auto shadow-sm ">
+           <div className="card bg-base-300 w-80  shadow-sm ">
             <div className='flux mt-0.5 '>
             <figure className='mb-0 pb-0'>
                 <img
@@ -27,10 +26,12 @@ const Card = ({user}) => {
             </div>
             <div className="card-body">
                <div><h2 className="card-title flex justify-center pt-0 mt-0">{firstName+" "+secondName}</h2></div> 
-                {about && <p className='mx-2 pb-2'>BIO :{about} </p>}
-                {age &&  <p className='mx-2 pb-2'>AGE :{age}</p>}
-                {skills &&  <p className='mx-3 pb-5'>SKILLS :{totskill}</p>}
-                <div className="card-actions justify-center">
+               {age && gender && <p className='mx-1 pb-1'>{age+" "}{gender}</p>}
+                {about && <p className='mx-1 pb-1'>{about} </p>}
+                
+                {skills &&  <p className='mx-1 pb-1'>SKILLS :{totskill}</p>}
+
+                <div className="card-actions justify-center p-2">
                 <button className="btn  btn-primary">Ignore</button>
                 <button className="btn  btn-secondary">Interested</button>
                 </div>

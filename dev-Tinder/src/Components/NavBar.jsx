@@ -1,19 +1,24 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate,Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { removeUser } from '../utils/userSlice';
 
 const NavBar = () => {
   const user = useSelector((store) => store.user);
- const dispatch = useDispatch();
- const nav=useNavigate();
+  const dispatch = useDispatch();
+  const nav = useNavigate();
   
-  const logouthandler = async () =>{
-      const logout = await axios.post("http://localhost:7777/logout",{withCredationals:true});
-      dispatch(removeUser());
-      nav("/login");
-  }
+  useEffect(() => {
+    if (user) {
+    }
+  }, [user]);
+
+  const logouthandler = async () => {
+    await axios.post("http://localhost:7777/logout", {}, { withCredentials: true });
+    dispatch(removeUser());
+    nav("/login");
+  };
 
   return (
     <div className="navbar bg-base-300 p-4 rounded-xl">
@@ -23,14 +28,13 @@ const NavBar = () => {
       <div className="flex gap-2">
         {user && (
           <div className="dropdown dropdown-end mx-6">
-           
             <div className="flex items-center justify-between gap-8">
-              <div>Welcome {user.data.data.firstName}</div>
+              <div>Welcome {user.firstName}</div>
               <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
                   <img
                     alt="Profile"
-                    src={user.data.data.photoUrl}
+                    src={user.photoUrl}
                   />
                 </div>
               </div>
@@ -43,7 +47,7 @@ const NavBar = () => {
                 <Link to="/profile" className="justify-between">Profile</Link>
               </li>
               <li>
-                <a>Settings</a>
+                <Link to="/Connections">Connections</Link>
               </li>
               <li>
                 <a onClick={logouthandler}>Logout</a>

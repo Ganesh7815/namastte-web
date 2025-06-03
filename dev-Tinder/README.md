@@ -27,6 +27,9 @@
 - logout feature
 - get the feed and  add the feed in the store
 - create the feed card and play
+- sell the all connections
+- see all the requests
+
 
 
 
