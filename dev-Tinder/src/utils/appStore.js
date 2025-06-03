@@ -3,11 +3,13 @@ import feedSlice from "./feedSlice";
 
 import userSlice from "./userSlice";
 import connectionSlice from "./connectionSlice"
+import requestSlice from "./requestSlice"
 const appStore = configureStore({
     reducer:{
         user:userSlice,
         feed:feedSlice,
-        connection:connectionSlice
+        connection:connectionSlice,
+        request:requestSlice
     }
 });
 

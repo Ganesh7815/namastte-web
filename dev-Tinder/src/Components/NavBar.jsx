@@ -8,7 +8,7 @@ const NavBar = () => {
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const nav = useNavigate();
-  
+
   useEffect(() => {
     if (user) {
     }
@@ -48,6 +48,9 @@ const NavBar = () => {
               </li>
               <li>
                 <Link to="/Connections">Connections</Link>
+              </li>
+               <li>
+                <Link to="/requests">Requests</Link>
               </li>
               <li>
                 <a onClick={logouthandler}>Logout</a>

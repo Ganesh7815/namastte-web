@@ -5,6 +5,7 @@ import Login from "./Components/Login"
 import Profile from "./Components/Profile"
 import Feed from "./Components/Feed"
 import Connections from "./Components/Connections"
+import Requests from "./Components/Requests"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import appStore from "./utils/appStore"
 
@@ -20,8 +21,9 @@ function App() {
       <Route path='login' element={<Login/>}/>
       <Route path='profile' element={<Profile/>}/>
       <Route path='connections' element={<Connections/>}/>
+      <Route path='requests' element={<Requests/>}/>
 
-      </Route>
+    </Route>
     </Routes>
     </BrowserRouter>
     </Provider>

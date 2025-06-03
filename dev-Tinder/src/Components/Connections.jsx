@@ -21,7 +21,12 @@ const Connections = () => {
     fetchConnections();
   }, []);
 
-  const currentConnection = useSelector((store)=>store.connection)
+  const currentConnection = useSelector((store)=>store.connection);
+
+if (!Array.isArray(currentConnection)) {
+  return <div className='text-center font-bold my-15 text-4xl' >No connections available</div>;
+}
+
 
   return (
      <div className='flex flex-col items-center  p-5'>
@@ -29,7 +34,7 @@ const Connections = () => {
       {currentConnection && currentConnection.length > 0 ? (
         currentConnection.map((conn) => (
          <div>
-         <div className='flex  my-2 bg-base-300 rounded-xl p-4  g-2 w-110 h-35  gap-4 items-center' > 
+         <div className='flex  my-2 bg-base-300 rounded-xl p-4  g-2 w-110 h-55  gap-4 items-center' > 
             <div> 
             <img src={conn.photoUrl} alt="Profile"  className='w-30 h-30 rounded-full '/>
            </div>
@@ -37,6 +42,7 @@ const Connections = () => {
             <p>{conn.firstName} {conn.secondName}</p>
             <p>Age: {conn.age}</p>
             <p>Gender: {conn.gender}</p>
+            <p>About: {conn.about}</p>
             <p>Skills: {conn.skills.join(" ")}</p>
             </div>
         </div>
@@ -47,6 +53,7 @@ const Connections = () => {
         <p>No Connections Found</p>
       )}
     </div>
+   
   )
 }
 
