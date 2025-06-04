@@ -9,7 +9,7 @@ const Connections = () => {
 
   const fetchConnections = async () => {
     try {
-      const response = await axios.get("http://localhost:7777/connections", { withCredentials: true });
+      const response = await axios.get(BASE_URL+"/connections", { withCredentials: true });
       dispatch(addConnection(response.data.data));
  
     } catch (err) {

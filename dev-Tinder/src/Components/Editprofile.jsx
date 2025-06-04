@@ -3,6 +3,7 @@ import Card from './Card';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import {addUser} from "../utils/userSlice"
+import BASE_URL from '../utils/constant';
 
 const EditProfile = ({ user }) => {
   const leftCardRef = useRef(null); // ADDED: Create a ref for the left card
@@ -28,7 +29,7 @@ const EditProfile = ({ user }) => {
 
   const savehandler = async() =>{
    try{
-        const updateUser = await axios.patch("http://localhost:7777/profile/update",{
+        const updateUser = await axios.patch(BASE_URL+"/profile/update",{
         firstName,
         secondName,
         photoUrl,

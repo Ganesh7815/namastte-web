@@ -9,7 +9,7 @@ const Requests = () => {
     const dispatch = useDispatch();
    const requestHander = async() =>{
       try{
-          const res = await axios.get("http://localhost:7777/requests/received",{withCredentials:true});
+          const res = await axios.get(BASE_URL+"/requests/received",{withCredentials:true});
          
           dispatch(addRequest(res.data.data));
       }catch(err)

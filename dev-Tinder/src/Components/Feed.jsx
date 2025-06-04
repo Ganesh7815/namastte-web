@@ -15,7 +15,7 @@ const Feed = () => {
       return
     }
     try {
-      const currentfeed = await axios.get("http://localhost:7777/feed", { withCredentials: true })
+      const currentfeed = await axios.get(BASE_URL+"/feed", { withCredentials: true })
       if (currentfeed ) {
         console.log(currentfeed.data.data);
         

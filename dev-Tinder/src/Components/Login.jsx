@@ -5,6 +5,7 @@ import appStore from '../utils/appStore';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
 import { useNavigate } from 'react-router-dom';
+import BASE_URL from '../utils/constant';
 
 const Login = () => {
   const[email,setEmail] = useState("ganesh@gmail.com");
@@ -36,7 +37,7 @@ const Login = () => {
 
   const signuphandler = async() =>{
     try{
-      const res=await axios.post("http://localhost:7777/signup",{firstName,secondName,email,password},{withCredentials:true});
+      const res=await axios.post(BASE_URL+"/signup",{firstName,secondName,email,password},{withCredentials:true});
    
       dispatch(addUser(res.data.data));
       nav("/profile");;
@@ -83,7 +84,7 @@ const Login = () => {
                       strokeLinecap="round"
                       strokeWidth="2.5"
                       fill="none"
-                      stroke="currentColor">
+                     >
                       <rect width="20" height="16" x="2" y="4" rx="2"></rect>
                       <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                     </g>

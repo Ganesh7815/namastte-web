@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import { removeUser } from '../utils/userSlice';
+import BASE_URL from '../utils/constant';
 
 const NavBar = () => {
   const user = useSelector((store) => store.user);
@@ -15,7 +16,7 @@ const NavBar = () => {
   }, [user]);
 
   const logouthandler = async () => {
-    await axios.post("http://localhost:7777/logout", {}, { withCredentials: true });
+    await axios.post(BASE_URL+"/logout", {}, { withCredentials: true });
     dispatch(removeUser());
     nav("/login");
   };
