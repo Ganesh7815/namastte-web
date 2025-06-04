@@ -21,7 +21,6 @@ const Requests = () => {
    const reviewHandler = async (status,_id) =>{
       try{
         const res = await axios.post("http://localhost:7777/request/review/"+status+"/"+_id,{},{withCredentials:true});
-        console.log(res);
         dispatch(removeRequest(_id));
       }catch(err)
       {

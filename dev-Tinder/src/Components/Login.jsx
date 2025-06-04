@@ -9,18 +9,21 @@ import { useNavigate } from 'react-router-dom';
 const Login = () => {
   const[email,setEmail] = useState("ganesh@gmail.com");
   const[password,setPassword] = useState("ganesh123@");
+  const[firstName,setFirstName]  = useState("");
+  const[secondName,setSecondName] = useState("");
+  const[islogin,setislogin] = useState(true);
   const[error,setError] = useState("");
   const dispatch = useDispatch();
   const nav = useNavigate();
   
 
-  const hander = async() =>{
+  const loginhandler = async() =>{
      try{
            const user = await axios.post("http://localhost:7777/login",{
             email,
             password
          },{withCredentials: true});
-         console.log(user.data.data);
+      
          
         dispatch(addUser(user.data.data));
         nav('/');
@@ -31,11 +34,47 @@ const Login = () => {
      }
   }
 
+  const signuphandler = async() =>{
+    try{
+      const res=await axios.post("http://localhost:7777/signup",{firstName,secondName,email,password},{withCredentials:true});
+   
+      dispatch(addUser(res.data.data));
+      nav("/profile");;
+    }catch(err){
+      console.log(err.response?.data?.error);
+    }
+  }
+
   return (
         <div className="flex justify-center">
         <div className="card bg-base-300  w-95 flex my-15 mx-auto">
-      <div className="card-body">
-        <h2 className="card-title justify-center">Email Id</h2>
+          <p className='flex justify-center mt-6 font-bold'>{islogin?"Login":"Sign Up"}</p>
+      <div className="card-body" >
+      
+        {!islogin && (<><label>
+         <h2>First Name:</h2>
+          <input
+            className="input"
+            type="text"
+            placeholder='First Name'
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+          />
+        </label>
+
+        <label>
+         <h2>Second Name:</h2>
+          <input
+            className="input "
+            type="text"
+            placeholder='Second Name'
+            value={secondName}
+            onChange={(e) => setSecondName(e.target.value)}
+          />
+        </label>
+        </>)
+}
+        <h2>Email Id:</h2>
 
         <label className="input validator">
                   <svg className="h-[1em] opacity-50 " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -54,8 +93,9 @@ const Login = () => {
                   />
                 </label>
                 <div className="validator-hint hidden">Enter valid email address</div>
-                   <label className="input validator flex my-5">
-            
+
+           <label className=''>Password :</label>  
+           <label className="input validator">
           <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <g
               strokeLinejoin="round"
@@ -80,10 +120,12 @@ const Login = () => {
             onChange={((e)=>setPassword(e.target.value))}
           />
         </label>
+     
         <p className='text-red-600 '>{error}</p>
         <div className="card-actions justify-center my-4">
-          <button className="btn" onClick={hander}>Login</button>
+          <button className="btn" onClick={islogin?loginhandler : signuphandler}>{islogin?"Login":"Sign Up"}</button>
         </div>
+        <p className='m-auto cursor-pointer' onClick={()=>setislogin(prev=>!prev)}>{islogin?"New User.. plz sign Up here..":"Exiting User.. plz login here"}</p>
       </div>
     </div>
     </div>

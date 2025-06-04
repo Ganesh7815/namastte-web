@@ -9,21 +9,13 @@ const EditProfile = ({ user }) => {
   const [leftCardHeight, setLeftCardHeight] = useState(0); // ADDED: Track the left card's height
   const dispatch = useDispatch();
 
-  const {
-    firstName: defaultFirstName,
-    secondName: defaultSecondName,
-    age: defaultAge,
-    photoUrl: defaultPhotoUrl,
-    gender: defaultGender,
-    about: defaultAbout
-  } = user;
-
-  const [firstName, setFirstName] = useState(defaultFirstName);
-  const [secondName, setSecondName] = useState(defaultSecondName);
-  const [photoUrl, setPhotoUrl] = useState(defaultPhotoUrl);
-  const [age, setAge] = useState(defaultAge);
-  const [gender, setGender] = useState(defaultGender);
-  const [about, setAbout] = useState(defaultAbout);
+ 
+  const [firstName, setFirstName] = useState(user.firstName);
+  const [secondName, setSecondName] = useState(user.secondName);
+  const [photoUrl, setPhotoUrl] = useState(user.photoUrl);
+  const [age, setAge] = useState(user.age || "");
+  const [gender, setGender] = useState(user.gender || "male");
+  const [about, setAbout] = useState(user.about || "");
   const[error,seterror] = useState("");
   const[showtoast,settoast] = useState(false);
 

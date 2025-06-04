@@ -22,7 +22,7 @@ const Body = () => {
         nav("/login");
         return;
       }
-      console.log(err.message);
+    
     }
   };
 
