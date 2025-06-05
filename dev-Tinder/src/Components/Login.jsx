@@ -8,8 +8,8 @@ import { useNavigate } from 'react-router-dom';
 import BASE_URL from '../utils/constant';
 
 const Login = () => {
-  const[email,setEmail] = useState("ganesh@gmail.com");
-  const[password,setPassword] = useState("ganesh123@");
+  const[email,setEmail] = useState("");
+  const[password,setPassword] = useState("");
   const[firstName,setFirstName]  = useState("");
   const[secondName,setSecondName] = useState("");
   const[islogin,setislogin] = useState(true);
@@ -20,7 +20,7 @@ const Login = () => {
 
   const loginhandler = async() =>{
      try{
-           const user = await axios.post("http://localhost:7777/login",{
+           const user = await axios.post(BASE_URL+"/login",{
             email,
             password
          },{withCredentials: true});
